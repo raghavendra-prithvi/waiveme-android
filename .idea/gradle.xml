@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="C:\Users\Ammu\Desktop\Android Apps\waiveme_updated\WaiveMe" />
+            <option value="C:\Users\Ammu\Desktop\Android Apps\waiveme_updated\WaiveMe\app" />
           </set>
         </option>
       </GradleProjectSettings>

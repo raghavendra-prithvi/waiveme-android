@@ -1,7 +1,9 @@
 package com.example.waiveme.app;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -78,7 +80,7 @@ public class AfterRegisterAcitivity extends ActionBarActivity {
             String result = null;
             JSONObject json = null;
             HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost("http://waive-me-staging.herokuapp.com/sessions.json");
+            HttpPost post = new HttpPost("http://waive-me-staging.herokuapp.com/signup.json");
             Intent intent = getIntent();
             String email = intent.getStringExtra("regEmail");
             String password = intent.getStringExtra("regPass");
@@ -95,6 +97,12 @@ public class AfterRegisterAcitivity extends ActionBarActivity {
                 try {
                     json = new JSONObject(result);
                     status = json.getString("status");
+                    if(status.equalsIgnoreCase("success")){
+                        SharedPreferences sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor edit = sharedpreferences.edit();
+                        edit.putString("userId",email);
+                        edit.commit();
+                    }
                     message = json.getString("message");
 
 

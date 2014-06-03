@@ -1,24 +1,20 @@
 package com.example.waiveme.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.*;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.*;
-import android.content.Context;
+import android.content.*;
 import android.widget.TextView;
-import android.util.JsonReader;
-
+import android.content.SharedPreferences.Editor;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -29,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.Object;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,16 +42,13 @@ public class LoginActivity extends ActionBarActivity {
         actionBar.hide();
         //run();
         new backgroundTask().execute();
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.login, menu);
-
         return true;
     }
 
@@ -70,8 +62,6 @@ public class LoginActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-
-
     }
 
    /* public void display() {
@@ -114,9 +104,7 @@ public class LoginActivity extends ActionBarActivity {
 
 
    public class backgroundTask extends AsyncTask<String, String, String>{
-
-
-        protected void onPreExecute(){
+     protected void onPreExecute(){
             super.onPreExecute();
             pDialog = new ProgressDialog(LoginActivity.this);
             pDialog.setMessage("Validating...");
@@ -124,8 +112,6 @@ public class LoginActivity extends ActionBarActivity {
             pDialog.setCancelable(false);
             pDialog.show();
         }
-
-
 
         protected String doInBackground(String... args) {
             String result=null;
@@ -143,12 +129,18 @@ public class LoginActivity extends ActionBarActivity {
                 HttpResponse response = client.execute(post);
                 HttpEntity entity = response.getEntity();
                 result = EntityUtils.toString(entity);
+                System.out.println("-------------------------- results --------------------");
+                System.out.println(result);
                 try {
                      json = new JSONObject(result);
                     status=json.getString("status");
+                    if(status.equalsIgnoreCase("success")){
+                        SharedPreferences sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                        Editor edit = sharedpreferences.edit();
+                        edit.putString("userId",email);
+                        edit.commit();
+                    }
                     message=json.getString("message");
-
-
                 }catch (JSONException e) {
                     Log.e("JSON PARSER", "JSON error");
                 }
@@ -168,6 +160,12 @@ public class LoginActivity extends ActionBarActivity {
        protected void onPostExecute(String s) {
            super.onPostExecute(s);
            TextView disp = (TextView)findViewById(R.id.putEmail);
+           SharedPreferences pref = getSharedPreferences("MyPref",
+                   Context.MODE_PRIVATE);
+           if (pref.contains("userId")){
+               disp.setText(pref.getString("userId",null));
+           }
+
            disp.setText(status);
            TextView temp = (TextView)findViewById(R.id.putMessage);
            temp.setText(message);

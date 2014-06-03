@@ -12,9 +12,12 @@ import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
 
+    private Session session;//global variable
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new Session(getApplicationContext()); //in oncreate
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -44,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void login_button(View view)
     {
+
 
         EditText email = (EditText)findViewById(R.id.emailEdit);
         EditText password = (EditText)findViewById(R.id.passEdit);
