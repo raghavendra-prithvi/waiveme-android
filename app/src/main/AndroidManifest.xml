@@ -34,6 +34,10 @@
             android:name="com.example.waiveme.app.AfterRegisterAcitivity"
             android:label="@string/title_activity_after_register_acitivity" >
         </activity>
+        <activity
+            android:name="com.example.waiveme.app.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>

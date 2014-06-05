@@ -47,8 +47,6 @@ public class MainActivity extends ActionBarActivity {
 
     public void login_button(View view)
     {
-
-
         EditText email = (EditText)findViewById(R.id.emailEdit);
         EditText password = (EditText)findViewById(R.id.passEdit);
         Intent intent = new Intent(this,LoginActivity.class);

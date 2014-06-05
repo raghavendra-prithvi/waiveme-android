@@ -16,8 +16,8 @@
         android:text="Email:"
         android:id="@+id/email"
         android:layout_alignBottom="@+id/emailEdit"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +26,8 @@
         android:text="Password:"
         android:id="@+id/password"
         android:layout_alignBottom="@+id/passEdit"
-        android:layout_toLeftOf="@+id/passEdit" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="236dp"

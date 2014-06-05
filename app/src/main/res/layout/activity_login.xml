@@ -29,4 +29,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="View Profile"
+        android:id="@+id/viewProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:clickable="true"
+        android:onClick="view_profile"/>
+
 </RelativeLayout>

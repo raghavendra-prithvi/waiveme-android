@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.waiveme.app.ProfileActivity">
+
+    <TextView
+        android:text="Welcome to the Profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name "
+        android:id="@+id/profileFirstName"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name  "
+        android:id="@+id/profieLastName"
+        android:layout_below="@+id/profileFirstName"
+        android:layout_alignLeft="@+id/profileFirstName"
+        android:layout_alignStart="@+id/profileFirstName"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City          "
+        android:id="@+id/profileCity"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/profieLastName"
+        android:layout_alignLeft="@id/profieLastName"
+        android:layout_alignStart="@id/profieLastName"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="State"
+        android:id="@+id/profileState"
+        android:layout_below="@+id/profileCity"
+        android:layout_alignLeft="@+id/profileCity"
+        android:layout_alignStart="@+id/profileCity"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zip Code"
+        android:id="@+id/profileZipCode"
+        android:layout_below="@+id/profileState"
+        android:layout_alignLeft="@+id/profileState"
+        android:layout_alignStart="@+id/profileState"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone "
+        android:id="@+id/profilePhone"
+        android:layout_below="@+id/profileZipCode"
+        android:layout_alignLeft="@+id/profileZipCode"
+        android:layout_alignStart="@+id/profileZipCode"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:id="@+id/profileAddress"
+        android:layout_below="@+id/profilePhone"
+        android:layout_alignLeft="@+id/profilePhone"
+        android:layout_alignStart="@+id/profilePhone"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileFirstNameData"
+        android:layout_above="@+id/profieLastName"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_marginLeft="48dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileLastNameData"
+        android:layout_alignBottom="@+id/profieLastName"
+        android:layout_alignLeft="@+id/profileFirstNameData"
+        android:layout_alignStart="@+id/profileFirstNameData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileCityData"
+        android:layout_alignBottom="@+id/profileCity"
+        android:layout_alignLeft="@+id/profileLastNameData"
+        android:layout_alignStart="@+id/profileLastNameData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileStateData"
+        android:layout_above="@+id/profileZipCode"
+        android:layout_alignLeft="@+id/profileCityData"
+        android:layout_alignStart="@+id/profileCityData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileZipCodeData"
+        android:layout_above="@+id/profilePhone"
+        android:layout_alignLeft="@+id/profileStateData"
+        android:layout_alignStart="@+id/profileStateData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profilePhoneData"
+        android:layout_above="@+id/profileAddress"
+        android:layout_alignLeft="@+id/profileZipCodeData"
+        android:layout_alignStart="@+id/profileZipCodeData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/profileAddressData"
+        android:layout_alignBottom="@+id/profileAddress"
+        android:layout_alignLeft="@+id/profilePhoneData"
+        android:layout_alignStart="@+id/profilePhoneData" />
+
+
+</RelativeLayout>

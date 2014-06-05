@@ -1,7 +1,5 @@
 package com.example.waiveme.app;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -26,7 +24,6 @@ public class RegisterActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.register, menu);
         return true;
@@ -45,7 +42,6 @@ public class RegisterActivity extends ActionBarActivity {
     }
 
     public void onRegister(View view){
-
         EditText email = (EditText)findViewById(R.id.regEditEmail);
         EditText password = (EditText)findViewById(R.id.regEditPass);
         EditText confPass= (EditText)findViewById(R.id.regEditPassword);

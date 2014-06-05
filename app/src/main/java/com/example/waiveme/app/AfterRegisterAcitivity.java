@@ -73,7 +73,6 @@ public class AfterRegisterAcitivity extends ActionBarActivity {
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
-
         }
 
         protected String doInBackground(String... args) {
@@ -97,7 +96,7 @@ public class AfterRegisterAcitivity extends ActionBarActivity {
                 try {
                     json = new JSONObject(result);
                     status = json.getString("status");
-                    if(status.equalsIgnoreCase("success")){
+                    if(status.equalsIgnoreCase("created")){
                         SharedPreferences sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
                         SharedPreferences.Editor edit = sharedpreferences.edit();
                         edit.putString("userId",email);
@@ -124,14 +123,18 @@ public class AfterRegisterAcitivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            SharedPreferences pref = getSharedPreferences("MyPref",
+                    Context.MODE_PRIVATE);
             TextView disp = (TextView) findViewById(R.id.noStatus);
-            disp.setText(status);
+            if (pref.contains("userId")) {
+                disp.setText("Welcome "+ pref.getString("userId",null));
+            }
+            else{
+                disp.setText(status);
+            }
             TextView temp = (TextView) findViewById(R.id.noMessage);
             temp.setText(message);
-
             pDialog.dismiss();
-
-
         }
     }
 

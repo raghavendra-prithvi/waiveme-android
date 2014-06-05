@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.app.*;
 import android.content.*;
+import android.view.View;
 import android.widget.TextView;
 import android.content.SharedPreferences.Editor;
 import org.apache.http.HttpEntity;
@@ -33,6 +34,7 @@ public class LoginActivity extends ActionBarActivity {
     private ProgressDialog pDialog;
     private String status;
     private String message;
+    public static final String MyPREFERENCES = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,11 @@ public class LoginActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void view_profile(View view){
+        Intent intent = new Intent(this,ProfileActivity.class);
+        startActivity(intent);
     }
 
    /* public void display() {
@@ -129,13 +136,11 @@ public class LoginActivity extends ActionBarActivity {
                 HttpResponse response = client.execute(post);
                 HttpEntity entity = response.getEntity();
                 result = EntityUtils.toString(entity);
-                System.out.println("-------------------------- results --------------------");
-                System.out.println(result);
                 try {
                      json = new JSONObject(result);
                     status=json.getString("status");
-                    if(status.equalsIgnoreCase("success")){
-                        SharedPreferences sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                    if(status.equalsIgnoreCase("created")){
+                        SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                         Editor edit = sharedpreferences.edit();
                         edit.putString("userId",email);
                         edit.commit();
@@ -145,12 +150,9 @@ public class LoginActivity extends ActionBarActivity {
                     Log.e("JSON PARSER", "JSON error");
                 }
 
-
-
             } catch (IOException e) {
                 String error ="CatchError1";
                 Log.e(error,e.toString());
-
             }
 
             return result;
@@ -160,20 +162,17 @@ public class LoginActivity extends ActionBarActivity {
        protected void onPostExecute(String s) {
            super.onPostExecute(s);
            TextView disp = (TextView)findViewById(R.id.putEmail);
-           SharedPreferences pref = getSharedPreferences("MyPref",
+           SharedPreferences pref = getSharedPreferences(MyPREFERENCES,
                    Context.MODE_PRIVATE);
            if (pref.contains("userId")){
-               disp.setText(pref.getString("userId",null));
+               disp.setText("Welcome "+ pref.getString("userId",null));
            }
-
-           disp.setText(status);
+           else {
+               disp.setText(status);
+           }
            TextView temp = (TextView)findViewById(R.id.putMessage);
            temp.setText(message);
-
            pDialog.dismiss();
-
-
        }
    }
-
 }
